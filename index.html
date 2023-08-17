@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="reset.css">
+</head>
+<body>
+    <div class="carrossel">
+        <img src="" alt="imagem do carrossel" id="carrosselImagem">
+        <button id="anterior" class="button">
+            <span class="button_lg">
+                <span class="button_sl"></span>
+                <span class="button_text">Anterior</span>
+            </span>
+        </button>
+        <button id="proximo" class="button">
+            <span class="button_lg">
+                <span class="button_sl"></span>
+                <span class="button_text">Próxima</span>
+            </span>
+        </button>
+    </div>
+    <script>
+        var imgIndice = 0
+        const IMAGENS = ['among1.png', 'among2.png', 'among3.png', 'among4.png', 'among5.png', 'among6.png', 'among7.png']
+        const prevButton = document.getElementById('anterior')
+        const nextButton = document.getElementById('proximo')
+
+        var IMG = document.getElementById('carrosselImagem')
+
+        var limite = (IMAGENS.length) 
+
+        function carregar(){
+            IMG.src = IMAGENS[imgIndice]
+        }
+
+        prevButton.addEventListener('click', () => {
+            if (imgIndice > 0){
+                --imgIndice
+                carregar()
+            }
+            else {
+                imgIndice = limite - 1
+                carregar()
+            }
+            
+        })
+        nextButton.addEventListener('click', () => {
+            if (imgIndice < limite - 1){
+                ++imgIndice
+                carregar()
+            }
+            else {
+                imgIndice = 0 
+                carregar()
+            }
+        })
+        carregar()
+    </script>
+</body>
+</html>
